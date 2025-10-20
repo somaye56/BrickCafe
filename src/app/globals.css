@@ -1,26 +1,167 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-bg-white: #ffffff;
+  --color-bg-LimeGreen: #40976c;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply min-h-screen text-black;
+}
+
+/* تنظیمات پایه Swiper */
+:root {
+  --swiper-pagination-color: var(--swiper-theme-color);
+  --swiper-pagination-right: 8px;
+  --swiper-pagination-bottom: 8px;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-inactive-color: #000;
+  --swiper-pagination-bullet-inactive-opacity: 0.2;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 4px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+}
+
+
+
+.swiper.zomorodSwiper {
+  width: 100%;
+  overflow: hidden; 
+  padding-top: 35px;
+
+  margin-top: 28px;
+}
+
+.swiper-slide {
+transition: transform 0.3s ease;
+  text-align: center;
+  display: flex !important;
+
+}
+
+
+.swiper-image-holder {
+  background: #fff;
+  border-radius: 100%;
+  height: 56px;
+  width: 56px;
+
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.swiper-image-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+} 
+
+/* ✅ حالت فعال */
+.swiper-image-holder.active {
+  transform: scale(1.1);
+  border: 3px solid rgb(210, 199, 152);
+  transition: all 0.3s ease;
+}
+
+/* محتوای پایین */
+.zomorod__slider {
+  border-radius: 24px;
+  width: 90%;
+  max-width: 800px;
+  transition: all 0.5s ease;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+.swiper-pagination-bullet-active {
+  background: #fff;
+}
+
+/* اصلی */
+.items__image {
+  background-color: #49a979;
+  width: 245px;
+  height: 245px;
+  border-radius: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+
+.items__image img {
+  width: 100%;
+
+}
+
+
+
+/* اسلاید‌های بعدی جابجا شوند */
+.zomorodSwiper .swiper-slide-next,
+.zomorodSwiper .swiper-slide-prev {
+  transform: translateY(-15px);
+}
+
+
+@keyframes slideUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+.swiper-pagination {
+  position: fixed !important;
+  bottom: 18px !important;                /* فاصله از پایین صفحه */
+  left: 50% !important;
+  transform: translateX(-50%) !important;/* مرکز کردن */
+  width: auto !important;                /* فقط اندازه bullets */
+  padding: 6px 8px !important;
+  display: flex !important;
+  gap: 8px !important;
+  z-index: 60 !important;               /* بالاتر از محتوا ولی پایین‌تر از مودال (مودال z-50) */
+  pointer-events: auto !important;
+  background: transparent !important;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: #999999 !important;
+  border-radius: 100% !important;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  transition: transform 0.25s ease, background 0.25s ease !important;
+}
+
+.swiper-pagination-bullet:hover {
+  transform: scale(1.2) !important;
+}
+
+.swiper-pagination-bullet-active {
+  border: 1px solid #FFF !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-color: #FFF !important;
+  transform: scale(1.4) !important;
+  position: relative;
+}
+.swiper-pagination-bullet-active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #FFF;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
 }

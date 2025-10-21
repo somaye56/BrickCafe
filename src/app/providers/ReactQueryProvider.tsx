@@ -11,16 +11,16 @@ interface QueryProviderProps {
 
 const QueryProvider: React.FC<QueryProviderProps> = ({ children }) => {
       const [queryClient] = useState(() => new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchInterval: false,
-            gcTime: 1000 * 60 * 10,
-            staleTime: 1000 * 60 * 10,
-            refetchOnWindowFocus: false,
-            retry: 3
-          },
-         
-        },
+            defaultOptions: {
+                  queries: {
+                        refetchInterval: false,
+                        gcTime: 1000 * 60 * 10,
+                        staleTime: 1000 * 60 * 10,
+                        refetchOnWindowFocus: false,
+                        retry: 3
+                  },
+
+            },
       }));
       return (
             <QueryClientProvider client={queryClient}>

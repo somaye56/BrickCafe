@@ -51,7 +51,7 @@ const SwiperHome: React.FC<SwiperHomeProps> = ({ selectedCategory }) => {
       >
         {filteredImages.map((src, index) => (
           <SwiperSlide
-            key={`${src.categoryId}-${index}`} 
+            key={`${src.categoryId}-${index}`}
             className="zomorod-items flex justify-center mt-[20px]"
           >
             <div className="grid grid-cols-1 ">

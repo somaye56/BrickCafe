@@ -1,6 +1,6 @@
-// src/hooks/useMenu.ts
+
 import { useQuery } from "@tanstack/react-query";
-    
+
 type Category = {
   id: string | number;
   category: string;
@@ -9,7 +9,7 @@ type Category = {
 };
 
 type Food = {
-  [key: string]: unknown; 
+  [key: string]: unknown;
   category?: string;
 };
 export const useMenu = () => {

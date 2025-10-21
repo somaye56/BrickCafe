@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="fa">
       <body
-        className={cn(`base relative z-0 overflow-y-hidden max-w-[700px] mx-auto bg-[#ffffff]`, iranSans.className)}
+        className={cn(`relative z-0 overflow-y-hidden max-w-[700px] mx-auto bg-[#ffffff]`, iranSans.className)}
       >
         <Providers>
           <Header />

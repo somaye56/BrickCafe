@@ -49,7 +49,7 @@ export default function SwiperZomorod() {
                   className={`swiper-image-holder cursor-pointer ${i === activeIndex ? "active" : ""
                     }`}
                   onClick={() => setActiveIndex(i)}
-                 
+
                 >
                   <Image
                     src={item.icon}

@@ -10,7 +10,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="flex justify-between w-full items-center p-[1.1rem] gap-1 ">
+      <div className="flex justify-between w-full items-center p-[1.1rem] gap-1 mt-5">
         <div className=" w-1/2 ">
           <button onClick={() => setIsOpen(true)} className="flex items-center justify-center h-10 w-10 bg-[rgba(73,169,121,1)] rounded-full -mt-0.5 mr-1.5 hover:bg-[rgba(73,169,121,0.8)] transition-all">
             <Image

@@ -25,46 +25,53 @@ export default function SwiperZomorod() {
   const selectedCategoryId = categories[activeIndex]?.id;
 
   return (
-    <div className="zomorod__wrapper ">
-      <div className="">
-        <SwiperComponent
-          modules={[Pagination]}
-          centeredSlides={true}
-          loop={true}
-          speed={600}
-          spaceBetween={10}
-          slidesPerView={4}
-          breakpoints={{
-            320: { slidesPerView: 3 },
-            640: { slidesPerView: 4 },
-            1024: { slidesPerView: 4 },
-          }}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          className="swiper zomorodSwiper  bg-[#3f9369] [border-radius:250px_250px_0_0/90px_90px_0_0] w-full "
-        >
-          {categories.map((item: Category, i: number) => (
-            <SwiperSlide key={i}>
-              <div className=" grid grid-cols-1 justify-center  ">
-                <div
-                  className={`swiper-image-holder cursor-pointer ${i === activeIndex ? "active" : ""
-                    }`}
-                  onClick={() => setActiveIndex(i)}
+    <>
 
-                >
-                  <Image
-                    src={item.icon}
-                    alt={item.category}
-                    width={50}
-                    height={50}
-                    className=""
-                  />
-                </div>
-                <span className=" font-bold text-white">{item.category}</span>
+      <SwiperComponent
+        modules={[Pagination]}
+        slidesPerView={4}
+        centeredSlides={false}
+        loop={false}
+        speed={600}
+        spaceBetween={8}
+        breakpoints={{
+          320: { slidesPerView: 4, spaceBetween: 8 },
+          390: { slidesPerView: 4, spaceBetween: 8 },
+          480: { slidesPerView: 4, spaceBetween: 10 },
+          640: { slidesPerView: 4, spaceBetween: 12 },
+          1024: { slidesPerView: 4, spaceBetween: 12 },
+        }}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        className="swiper zomorodSwiper bg-[#3f9369] [border-radius:250px_250px_0_0/90px_90px_0_0]"
+      >
+        {categories.map((item: Category, i: number) => (
+          <SwiperSlide className="flex flex-col items-center" key={i}>
+            <div className=" grid items-center">
+              <div
+                className={`swiper-image-holder cursor-pointer ${i === activeIndex ? "active" : ""
+                  } ${i === (activeIndex + 1) % categories.length ||
+                    i === (activeIndex + 2) % categories.length
+                    ? "raised-slide"
+                    : ""
+                  }`}
+                onClick={() => setActiveIndex(i)}
+              >
+
+                <Image
+                  src={item.icon}
+                  alt={item.category}
+                  width={20}
+                  height={20}
+                  className="w-4"
+                />
               </div>
-            </SwiperSlide>
-          ))}
-        </SwiperComponent>
-      </div>
+              <span className="font-bold text-white text-center ">{item.category}</span>
+            </div>
+          </SwiperSlide>
+
+        ))}
+      </SwiperComponent>
+
       <div className="min-h-screen bg-bg-LimeGreen  [border-radius:250px_250px_0_0/90px_90px_0_0] mx-auto w-full">
         <div className="  w-full ">
           <div className=" w-full mx-auto  text-white relative min-h-screen">
@@ -72,9 +79,6 @@ export default function SwiperZomorod() {
           </div>
         </div>
       </div>
-    </div>
-
-
-
+    </>
   );
 }

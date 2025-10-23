@@ -38,7 +38,9 @@ transition: transform 0.3s ease;
 
 }
 
-
+.raised-slide {
+  @apply rounded-[20px] bg-[#f0f0f0] -translate-y-5 z-10 transition-all duration-300 ease-[ease];
+}
 .swiper-image-holder {
   background: #fff;
   border-radius: 100%;
@@ -55,63 +57,89 @@ transition: transform 0.3s ease;
   border-radius: 100%;
 } 
 
-/* ✅ حالت فعال */
+
 .swiper-image-holder.active {
   transform: scale(1.1);
   border: 3px solid rgb(210, 199, 152);
   transition: all 0.3s ease;
 }
 
-/* محتوای پایین */
-.zomorod__slider {
-  border-radius: 24px;
-  width: 90%;
-  max-width: 800px;
-  transition: all 0.5s ease;
-}
 
-.swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.7);
-  transition: all 0.3s ease;
-}
-.swiper-pagination-bullet-active {
-  background: #fff;
-}
-
-/* اصلی */
 .items__image {
-  background-color: #49a979;
-  width: 245px;
-  height: 245px;
-  border-radius: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  transition: all 0.3s ease;
+  @apply bg-[#49a979] w-[245px] h-[245px] rounded-full overflow-hidden flex items-center justify-center m-0 transition-all duration-300 ease-[ease];
 }
+  
+  .items__image img {
+    @apply w-full object-cover;
+  }
+  .swiper-image-holder img {
+    @apply max-w-[51px];
+  }
+  
+  .zomorodSwiper .swiper-slide-next,
+  .zomorodSwiper .swiper-slide-next + .swiper-slide {
+ transition: all 0.3s ease;
+  }
+  
+  .zomorodSwiper .custom-slide {
+ -webkit-transform: translateY(-20px);
+ transform: translateY(-20px);
+  }
+  
+  .zomorodSwiper {
+    padding-top: 80px; 
+  }
+  
+  .zomorodSwiper .zomorod-items {
+      transition: transform 0.3s ease, opacity 0.3s ease; 
+  }
+  
+  .zomorodSwiper .swiper-slide-active.zomorod-items {
+    @apply -translate-y-[60px] z-10;
+  }
+  
+  .zomorodSwiper .swiper-slide-prev.zomorod-items,
+  .zomorodSwiper .swiper-slide-next.zomorod-items {
+    transform: translateY(0); 
+    opacity: 0.8;
+    z-index: 5;
+  }
+  /* ================================================= */
+  
+  
+  /* تنظیمات عمومی موبایل */
+  @media screen and (max-width: 700px) {
+  .zomorod__container {
+  height: 100vh;
+ width: 100%;
+ }
+  }
+  
 
+  @media screen and (max-width: 500px) {
+    .zomorodSwiper {
+      padding-top: 50px;
+    }
+  .zomorod-items {
+    width: 180px;
+   }
+  
 
-.items__image img {
-  width: 100%;
-
+.swiper-slide-active.zomorod-items .items__image {
+  @apply w-[215px] h-[215px] scale-[1.05];
 }
-
-/* اسلاید‌های بعدی جابجا شوند */
-.zomorodSwiper .swiper-slide-next,
-.zomorodSwiper .swiper-slide-prev {
-  transform: translateY(-15px);
-}
-
-
-@keyframes slideUp {
-  0% { transform: translateY(100%); }
-  100% { transform: translateY(0); }
-}
-.animate-slideUp {
-  animation: slideUp 0.4s ease-out forwards;
-}
+  
+  
+ @apply [transform:translateY(10%)] opacity-70 w-[200px] z-[25];
+  
+ .swiper-slide-active.zomorod-items {
+  @apply -translate-y-[5%] w-[245px] z-10;
+ }
+  
+ .zomorodSwiper .swiper-wrapper {
+  padding-right: 20px;
+ }
+  }
 
 .swiper-pagination {
   position: fixed !important;

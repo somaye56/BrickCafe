@@ -28,13 +28,13 @@ const SwiperHome: React.FC<SwiperHomeProps> = ({ selectedCategory }) => {
   return (
     <div className="relative py-[30px] flex  items-center ">
       <Swiper
-        spaceBetween={20}
-        slidesPerView={2.3}
+        spaceBetween={2}
+        centeredSlides={true}              
         breakpoints={{
-          320: { slidesPerView: 1.7 },
-          480: { slidesPerView: 2 },
-          768: { slidesPerView: 2.5 },
-          1024: { slidesPerView: 2.4 },
+          320: { slidesPerView: 1.5, centeredSlides: true },  
+          480: { slidesPerView: 1.8, centeredSlides: true },
+          640: { slidesPerView: 2.2, centeredSlides: true },
+          1024: { slidesPerView: 2.4, centeredSlides: true },
         }}
         pagination={{
           clickable: true,
@@ -42,21 +42,21 @@ const SwiperHome: React.FC<SwiperHomeProps> = ({ selectedCategory }) => {
           dynamicMainBullets: 3,
         }}
         modules={[Pagination]}
-        className="w-full"
+        className="zomorodSwiper w-full"
         style={{
-          "--swiper-pagination-bullet-size": "10px",
+          "--swiper-pagination-bullet-size": "5px",
           "--swiper-pagination-bullet-horizontal-gap": "6px",
-          paddingBottom: "40px",
+          paddingBottom: "20px",
         } as React.CSSProperties}
       >
         {filteredImages.map((src, index) => (
           <SwiperSlide
             key={`${src.categoryId}-${index}`}
-            className="zomorod-items flex justify-center mt-[20px]"
+            className="zomorod-items flex justify-center mt-[40px]"
           >
             <div className="grid grid-cols-1 ">
               <div
-                className="items__image cursor-pointer flex justify-center"
+                className="items__image  cursor-pointer flex justify-center"
                 onClick={() => setSelectedItem(src)}
               >
                 <Image
@@ -69,7 +69,7 @@ const SwiperHome: React.FC<SwiperHomeProps> = ({ selectedCategory }) => {
               </div>
               <div className="mt-5 text-white font-bold flex flex-col items-center text-center gap-2">
                 <div>{src.name}</div>
-                <div>{src.MainPrice} تومان</div>
+                <div> تومان {src.MainPrice} </div>
               </div>
             </div>
           </SwiperSlide>
@@ -137,7 +137,7 @@ const SwiperHome: React.FC<SwiperHomeProps> = ({ selectedCategory }) => {
                     <AddIcon />
                   </button>
                 </div>
-                <div className="font-semibold text-xl flex justify-end w-1/2">
+                <div className="font-semibold text-xl flex justify-end text-nowrap">
                   یادداشت سفارش
                 </div>
               </div>

@@ -1,15 +1,15 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import "swiper/css";
-import "swiper/css/pagination";
+
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import AddIcon from "../../icons/AddIcon";
 import BackIcon from "../../icons/BackIcon";
 import NegativeIcon from "../../icons/NegativeIcon";
 import { foods } from "./foods";
-
+// @ts-ignore: side-effect CSS import has no type declarations in this TS config
+import "./styles.css";
 interface SwiperHomeProps {
   selectedCategory?: number | string | null;
 }
@@ -56,7 +56,7 @@ const SwiperHome: React.FC<SwiperHomeProps> = ({ selectedCategory }) => {
           >
             <div className="grid grid-cols-1 ">
               <div
-                className="items__image  cursor-pointer flex justify-center"
+                className="items__image  cursor-pointer flex justify-center "
                 onClick={() => setSelectedItem(src)}
               >
                 <Image

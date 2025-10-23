@@ -1,0 +1,38 @@
+
+.raised-slide {
+  border-radius: 20px;
+  background: #f0f0f0;
+  transform: translateY(-20px);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.swiper-image-holder {
+  background: #fff;
+  border-radius: 100%;
+  height: 56px;
+  width: 56px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.swiper-image-holder img {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 100%;
+} 
+
+
+.swiper-image-holder.active {
+  transform: scale(1.1);
+  border: 3px solid rgb(210, 199, 152);
+  transition: all 0.3s ease;
+}
+.zomorodSwiper .swiper-slide-next,
+.zomorodSwiper .swiper-slide-next + .swiper-slide {
+  transition: all 0.3s ease;
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+  /* transform: translateY(-0px); */
+}

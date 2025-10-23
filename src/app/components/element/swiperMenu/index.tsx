@@ -16,10 +16,53 @@ interface Category {
   category: string;
   icon: string;
 }
+// @ts-ignore: side-effect CSS import has no type declarations in this TS config
+import "./styles.css";
 
 export default function SwiperZomorod() {
   const { data } = useMenu();
-
+  // const categories: Category[] = [
+  //   {
+  //     category: "پیتزا",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/3132/3132693.png",
+  //     id: 1
+  //   },
+  //   {
+  //     category: "برگر",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
+  //     id: 2
+  //   },
+  //   {
+  //     category: "پاستا",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/599/599995.png",
+  //     id: 3
+  //   },
+  //   {
+  //     category: "نوشیدنی",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/415/415733.png",
+  //     id: 4
+  //   },
+  //   {
+  //     category: "دسر",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/590/590836.png",
+  //     id: 5
+  //   },
+  //   {
+  //     category: "ساندویچ",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/1046/1046786.png",
+  //     id: 6
+  //   },
+  //   {
+  //     category: "سالاد",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/1046/1046782.png",
+  //     id: 7
+  //   },
+  //   {
+  //     category: "پیش‌غذا",
+  //     icon: "https://cdn-icons-png.flaticon.com/512/1046/1046781.png",
+  //     id: 8
+  //   },
+  // ];
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const categories = Array.isArray(data?.categories) ? data.categories : [];
   const selectedCategoryId = categories[activeIndex]?.id;
@@ -42,18 +85,14 @@ export default function SwiperZomorod() {
           1024: { slidesPerView: 4, spaceBetween: 12 },
         }}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        className="swiper zomorodSwiper bg-[#3f9369] [border-radius:250px_250px_0_0/90px_90px_0_0]"
+        className="swiper zomorodSwiper bg-[#3f9369] [border-radius:250px_250px_0_0/90px_90px_0_0] swiper-initialized swiper-horizontal swiper-pointer-events"
       >
         {categories.map((item: Category, i: number) => (
-          <SwiperSlide className="flex flex-col items-center" key={i}>
-            <div className=" grid items-center">
+          <SwiperSlide className="flex flex-col items-center p-1" key={i}>
+            <div className="grid grid-cols-1 items-center justify-items-center  text-nowrap">
               <div
-                className={`swiper-image-holder cursor-pointer ${i === activeIndex ? "active" : ""
-                  } ${i === (activeIndex + 1) % categories.length ||
-                    i === (activeIndex + 2) % categories.length
-                    ? "raised-slide"
-                    : ""
-                  }`}
+                className={`swiper-image-holder cursor-pointer 
+                  ${i === activeIndex ? "active" : ""}`}
                 onClick={() => setActiveIndex(i)}
               >
 
